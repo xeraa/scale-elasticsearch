@@ -2,6 +2,8 @@
 
 Demo code for the [Scale Your Elasticsearch Cluster](https://speakerdeck.com/xeraa/scale-your-elasticsearch-cluster) talk.
 
+**The settings used are for a short lived demo such as a rollover at 5MB. Do not use those for any development or production environment.**
+
 
 ## Flow
 
