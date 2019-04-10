@@ -26,6 +26,3 @@ curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_template/rollup -d@
 sleep 5m # Wait until (hopefully) there is Metricbeat data, which is needed to target fields in the rollup
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_rollup/job/metricbeat -d@/opt/setup/rollup.json
 curl -s -H 'Content-Type: application/json' -XPOST ${ES_URL}/_rollup/job/metricbeat/_start
-
-# Workaround until https://github.com/elastic/beats/pull/11671 is released to reset ILM
-curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_ilm/policy/metricbeat -d@/opt/setup/ilm.json
