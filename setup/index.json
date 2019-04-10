@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "index.lifecycle.name": "metricbeat"
+  },
+  "aliases": {
+    "metricbeat":{
+      "is_write_index": true
+    }
+  }
+}

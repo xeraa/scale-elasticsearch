@@ -1,0 +1,13 @@
+{
+  "order": 10,
+  "index_patterns": ["metricbeat-*"],
+  "settings": {
+  	"index": {
+      "number_of_shards" : 2,
+      "number_of_replicas" : 0,
+      "routing.allocation.include.size": "hot",
+      "lifecycle.name": "metricbeat",
+      "lifecycle.rollover_alias": "metricbeat"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "index_pattern" : "metricbeat-*",
+  "rollup_index" : "metricbeat_rollup",
+  "cron" : "0 * * * * ?",
+  "groups" : {
+    "date_histogram" : {
+      "interval" : "5m",
+      "field" : "@timestamp",
+      "delay" : "1m",
+      "time_zone" : "UTC"
+    }
+  },
+  "metrics" : [
+    {
+      "field" : "docker.network.in.bytes",
+      "metrics" : [
+        "avg",
+        "sum"
+      ]
+    },
+    {
+      "field" : "docker.network.out.bytes",
+      "metrics" : [
+        "avg",
+        "sum"
+      ]
+    }
+  ],
+  "timeout" : "20s",
+  "page_size" : 1000
+}

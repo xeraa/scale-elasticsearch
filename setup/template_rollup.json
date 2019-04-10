@@ -1,0 +1,11 @@
+{
+  "order": 10,
+  "index_patterns": ["*_rollup"],
+  "settings": {
+  	"index": {
+  	  "number_of_shards" : 1,
+      "number_of_replicas" : 0,
+      "routing.allocation.include.size": "warm"
+    }
+  }
+}
