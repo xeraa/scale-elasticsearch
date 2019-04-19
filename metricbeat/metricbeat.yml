@@ -23,9 +23,7 @@ setup:
   kibana.host: "kibana:5601"
   dashboards.enabled: true
   ilm:
-    enabled: yes
+    enabled: true
     rollover_alias: "metricbeat"
     pattern: "metricbeat-000000"
     policy_name: "metricbeat"
-    overwrite: false
-    #policy_filee: "${path.config}/ilm.json"
