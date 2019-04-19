@@ -81,5 +81,4 @@ Show the underlying *setup/rollup.json* and how you would build it in the Kibana
 ## Todo
 
 * Wait for https://github.com/elastic/beats/pull/11671 to be released to simplify the setup.sh
-* Multiple hosts in the Kibana config
 * Integrate Frozen Indices better into ILM

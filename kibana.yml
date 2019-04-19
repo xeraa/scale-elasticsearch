@@ -1,0 +1,6 @@
+server.name: kibana
+server.host: "0"
+elasticsearch.hosts:
+  - "http://elasticsearch-hot:9200"
+  - "http://elasticsearch-warm:9200"
+  - "http://elasticsearch-cold:9200"
