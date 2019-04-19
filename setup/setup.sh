@@ -5,14 +5,14 @@ ES_URL=http://elasticsearch-hot:9200
 # Wait for Elasticsearch to start up before doing anything.
 until curl -s ${ES_URL}/_cat/health -o /dev/null; do
     echo Waiting for Elasticsearch...
-    sleep 1
+    sleep 3
 done
 
 
 # Wait for Kibana to start up before doing anything.
 until curl -s http://kibana:5601/ -o /dev/null; do
     echo Waiting for Kibana...
-    sleep 1
+    sleep 3
 done
 
 # Load the relevant settings for ILM
