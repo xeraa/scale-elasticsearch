@@ -12,6 +12,11 @@ Demo code for the [Scale Your Elasticsearch Cluster](https://speakerdeck.com/xer
 Start with a `docker-compose up` and explain the different parts while it is initializing.
 
 
+### Index Lifecycle Management
+
+Explain how `node.attr.size` is tying the architecture together. Show both *setup/templace_metricbeat.json* and *setup/ilm.json*, explain what is going on, and show the results in Index Management. Also load the ILM configuration in the Kibana UI, but explain why not all values are shown correctly.
+
+
 ### Frozen Index
 
 Trying out frozen indices including the recommended steps to use:
@@ -20,7 +25,8 @@ Trying out frozen indices including the recommended steps to use:
 PUT frozen
 {
   "settings": {
-    "index.routing.allocation.include.size": "cold"
+    "index.routing.allocation.include.size": "cold",
+    "index.number_of_replicas" : 0
   }
 }
 
@@ -64,29 +70,16 @@ POST frozen/_doc
 }
 
 GET frozen/_search
-
-
-# Import Kibana sample data (here the ecommerce one)
-# Show the dashboard before and after freezing (and fix the setting in Kibana)
-POST kibana_sample_data_ecommerce/_freeze
 ```
 
-
-### Index Lifecycle Management
-
-Explain how `node.attr.size` is tying the architecture together. Show both *setup/templace_metricbeat.json* and *setup/ilm.json*, explain what is going on, and show the results in Index Management. Also load the ILM configuration in the Kibana UI, but explain why not all values are shown correctly.
+Show in *Discover* how the frozen indices are not shown by default and that you need to turn them on in the Kibana settings.
 
 
 ### Rollup
 
-Show the underlying *setup/rollup.json* and how you would build it in the Kibana UI. Show the underlying documents in Discover and build a visualization on the Docker network traffic (if there are a couple of documents at least).
+Show the underlying *setup/rollup.json* and how you would build it in the Kibana UI. Show the underlying documents in Discover and build a visualization on the Docker network traffic.
 
 
 ### Cleanup
 
 Run `docker-compose down -v` to get rid of the entire setup again.
-
-
-## Todo
-
-* Integrate Frozen Indices better into the ILM demo
