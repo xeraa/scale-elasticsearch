@@ -82,4 +82,4 @@ Show the underlying *setup/rollup.json* and how you would build it in the Kibana
 
 ### Cleanup
 
-Run `docker-compose down -v` to get rid of the entire setup again.
+Run `docker-compose down -v` to remove of the entire setup again.
