@@ -18,7 +18,7 @@ done
 # Load the relevant settings for ILM
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_cluster/settings -d@/opt/setup/cluster.json
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_ilm/policy/metricbeat -d@/opt/setup/ilm.json
-curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_template/metricbeat -d@/opt/setup/template_metricbeat.json
+curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_template/metricbeat-custom -d@/opt/setup/template_metricbeat.json
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/metricbeat-000000 -d@/opt/setup/index.json
 
 # Load the relevant settings for Rollups
