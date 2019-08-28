@@ -9,11 +9,11 @@ processors:
 - add_docker_metadata: ~
 
 
-xpack.monitoring.enabled: true
+monitoring.enabled: true
 
 
 output.elasticsearch:
-  hosts: ["elasticsearch-hot:9200"]
+  hosts: ["elasticsearch-hot:9200", "elasticsearch-warm:9200", "elasticsearch-cold:9200"]
 
 
 logging.to_files: false
@@ -21,6 +21,7 @@ logging.to_files: false
 
 setup:
   kibana.host: "kibana:5601"
+  template.enabled: true
   dashboards.enabled: true
   ilm:
     enabled: true
