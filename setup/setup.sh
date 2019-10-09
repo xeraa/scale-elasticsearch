@@ -21,6 +21,10 @@ curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_ilm/policy/metricbe
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_template/metricbeat-custom -d@/opt/setup/template_metricbeat.json
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/metricbeat-000000 -d@/opt/setup/index.json
 
+# Load the relevant settings for SLM
+curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_snapshot/my_repository -d@/opt/setup/snapshot_repository.json
+curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_slm/policy/ten_min_snapshot -d@/opt/setup/slm.json
+
 # Load the relevant settings for Rollups
 curl -s -H 'Content-Type: application/json' -XPUT ${ES_URL}/_template/rollup -d@/opt/setup/template_rollup.json
 sleep 5m # Wait until (hopefully) there is Metricbeat data, which is needed to target fields in the rollup

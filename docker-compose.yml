@@ -2,7 +2,12 @@ version: '2'
 services:
   elasticsearch-hot:
     container_name: elasticsearch-hot
-    image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
+    build:
+      dockerfile: $PWD/Dockerfile
+      context: $PWD
+      args:
+        - ELASTIC_VERSION=${ELASTIC_VERSION}
+    image: elasticsearch-scale:$ELASTIC_VERSION
     environment:
       - cluster.name=metrics-cluster
       - node.name=elasticsearch-hot
@@ -12,6 +17,7 @@ services:
       - discovery.seed_hosts=elasticsearch-warm,elasticsearch-cold
       - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm,elasticsearch-cold
       - xpack.monitoring.collection.enabled=true
+      - path.repo=/usr/share/elasticsearch/backup
     ulimits:
       memlock:
         soft: -1
@@ -19,6 +25,7 @@ services:
     mem_limit: 1g
     volumes:
       - elasticsearch_data_hot:/usr/share/elasticsearch/data
+      - elasticsearch_backup:/usr/share/elasticsearch/backup
     ports:
       - 9200:9200
     networks:
@@ -26,7 +33,12 @@ services:
 
   elasticsearch-warm:
     container_name: elasticsearch-warm
-    image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
+    build:
+      dockerfile: $PWD/Dockerfile
+      context: $PWD
+      args:
+        - ELASTIC_VERSION=${ELASTIC_VERSION}
+    image: elasticsearch-scale:$ELASTIC_VERSION
     environment:
       - cluster.name=metrics-cluster
       - node.name=elasticsearch-warm
@@ -36,6 +48,7 @@ services:
       - discovery.seed_hosts=elasticsearch-hot,elasticsearch-cold
       - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm,elasticsearch-cold
       - xpack.monitoring.collection.enabled=true
+      - path.repo=/usr/share/elasticsearch/backup
     ulimits:
       memlock:
         soft: -1
@@ -43,6 +56,7 @@ services:
     mem_limit: 1g
     volumes:
       - elasticsearch_data_warm:/usr/share/elasticsearch/data
+      - elasticsearch_backup:/usr/share/elasticsearch/backup
     ports:
       - 9201:9200
     networks:
@@ -50,7 +64,12 @@ services:
 
   elasticsearch-cold:
     container_name: elasticsearch-cold
-    image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
+    build:
+      dockerfile: $PWD/Dockerfile
+      context: $PWD
+      args:
+        - ELASTIC_VERSION=${ELASTIC_VERSION}
+    image: elasticsearch-scale:$ELASTIC_VERSION
     environment:
       - cluster.name=metrics-cluster
       - node.name=elasticsearch-cold
@@ -60,6 +79,7 @@ services:
       - discovery.seed_hosts=elasticsearch-hot,elasticsearch-warm
       - cluster.initial_master_nodes=elasticsearch-hot,elasticsearch-warm,elasticsearch-cold
       - xpack.monitoring.collection.enabled=true
+      - path.repo=/usr/share/elasticsearch/backup
     ulimits:
       memlock:
         soft: -1
@@ -67,6 +87,7 @@ services:
     mem_limit: 1g
     volumes:
       - elasticsearch_data_cold:/usr/share/elasticsearch/data
+      - elasticsearch_backup:/usr/share/elasticsearch/backup
     ports:
       - 9202:9200
     networks:
@@ -123,6 +144,8 @@ volumes:
   elasticsearch_data_hot:
     driver: local
   elasticsearch_data_cold:
+    driver: local
+  elasticsearch_backup:
     driver: local
 
 networks:

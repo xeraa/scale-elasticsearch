@@ -12,9 +12,14 @@ Demo code for the [Scale Your Elasticsearch Cluster](https://speakerdeck.com/xer
 Start with a `docker-compose up` and explain the different parts while it is initializing.
 
 
-### Index Lifecycle Management
+### Index Lifecycle Management (ILM)
 
 Explain how `node.attr.size` is tying the architecture together. Show both *setup/templace_metricbeat.json* and *setup/ilm.json*, explain what is going on, and show the results in Index Management. Also load the ILM configuration in the Kibana UI, but explain why not all values are shown correctly.
+
+
+### Snapshot Lifecycle Management (SLM)
+
+Explain how to set up the snapshot repository with *setup/snapshot_repository.json* and the policy with *setup/slm.json*. If the audience is interested in Docker details, point to the custom *Dockerfile* and why you need to create and chown the bind mounted folder, since it would be owned by root otherwise and Elasticsearch couldn't write to it.
 
 
 ### Frozen Index

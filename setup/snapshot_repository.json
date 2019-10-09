@@ -1,0 +1,6 @@
+{
+  "type": "fs",
+  "settings": {
+    "location": "/usr/share/elasticsearch/backup/ten_min_snapshot"
+  }
+}
