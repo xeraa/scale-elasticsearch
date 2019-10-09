@@ -1,6 +1,6 @@
 {
   "schedule": "0 0/10 * * * ?",
-  "name": "<ten_min_snapshot-{now/m}>",
+  "name": "<ten_min_snapshot-{now}>",
   "repository": "my_repository",
   "config": {
     "indices": ["*"]
