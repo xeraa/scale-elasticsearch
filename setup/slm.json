@@ -4,5 +4,10 @@
   "repository": "my_repository",
   "config": {
     "indices": ["*"]
+  },
+  "retention": {
+    "expire_after": "30m",
+    "max_count": 5,
+    "min_count": 2
   }
 }
