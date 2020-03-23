@@ -14,7 +14,7 @@ Start with a `docker-compose up` and explain the different parts while it is ini
 
 ### Index Lifecycle Management (ILM)
 
-Explain how `node.attr.size` is tying the architecture together. Show both *setup/templace_metricbeat.json* and *setup/ilm.json*, explain what is going on, and show the results in Index Management. Also load the ILM configuration in the Kibana UI, but explain why not all values are shown correctly.
+Explain how `node.attr.size` is tying the architecture together. Show both *setup/templace_metricbeat.json* and *setup/ilm.json*, explain what is going on, and show the results in Index Management. Also load the ILM configuration in the Kibana UI, but explain why not all values are shown correctly. And you can also check the current state of an index with `GET /metricbeat-00000/_ilm/explain`.
 
 
 ### Snapshot Lifecycle Management (SLM)
