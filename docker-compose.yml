@@ -3,8 +3,8 @@ services:
   elasticsearch-hot:
     container_name: elasticsearch-hot
     build:
-      dockerfile: $PWD/Dockerfile
-      context: $PWD
+      dockerfile: ./Dockerfile
+      context: .
       args:
         - ELASTIC_VERSION=${ELASTIC_VERSION}
     image: elasticsearch-scale:$ELASTIC_VERSION
@@ -34,8 +34,8 @@ services:
   elasticsearch-warm:
     container_name: elasticsearch-warm
     build:
-      dockerfile: $PWD/Dockerfile
-      context: $PWD
+      dockerfile: ./Dockerfile
+      context: .
       args:
         - ELASTIC_VERSION=${ELASTIC_VERSION}
     image: elasticsearch-scale:$ELASTIC_VERSION
@@ -65,8 +65,8 @@ services:
   elasticsearch-cold:
     container_name: elasticsearch-cold
     build:
-      dockerfile: $PWD/Dockerfile
-      context: $PWD
+      dockerfile: ./Dockerfile
+      context: .
       args:
         - ELASTIC_VERSION=${ELASTIC_VERSION}
     image: elasticsearch-scale:$ELASTIC_VERSION
